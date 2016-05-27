@@ -1160,7 +1160,7 @@
 						H.visible_message("<span class='danger'>[H] has received a concussion!</span>", \
 										"<span class='userdanger'>[H] has received a concussion!</span>")
 						H.confused += 10
-						H.apply_effect(0.5, WEAKEN, armor_block)
+						H.apply_effect(1, WEAKEN, armor_block)
 						H.adjustBrainLoss(max(10, I.force/2))
 					var/role = lowertext(user.mind.special_role)
 					if(role != "revolutionary" && role != "head revolutionary")
@@ -1186,7 +1186,7 @@
 				if(H.stat == CONSCIOUS && I.force && prob(min(I.force, 35)))
 					H.visible_message("<span class='danger'>[H] recoils and stumbles from the attack!</span>", \
 									"<span class='userdanger'>[H] recoils and stumbles from the attack!</span>")
-					H.apply_effect(0.5, WEAKEN, armor_block)
+					H.apply_effect(1, WEAKEN, armor_block)
 					H.adjustStaminaLoss(20)
 
 				if(bloody)
