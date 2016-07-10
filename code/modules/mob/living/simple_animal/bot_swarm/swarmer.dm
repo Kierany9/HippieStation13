@@ -293,10 +293,6 @@
 							if((A.temperature > 270) && (A.temperature < 360))//Not too hot, not too cold
 								var/pressure = A.return_pressure()
 								if((pressure > 20) && (pressure < 550))//Account for crushing pressure or vaccuums
-									if(ishuman(target))//If we're getting rid of a human, slap some zipties on them to keep them away from us a little longer
-										var/obj/item/weapon/restraints/handcuffs/cable/zipties/Z = new /obj/item/weapon/restraints/handcuffs/cable/zipties(src)
-										var/mob/living/carbon/human/H = target
-										Z.apply_cuffs(H, src)
 									do_teleport(target, F, 0)
 									playsound(src,'sound/effects/sparks4.ogg',50,1)
 									break
