@@ -1027,7 +1027,7 @@
 					atk_verb = "kick"
 
 				var/hitcheck = rand(0, 9)
-				var/damage = pick(0.5, 1, 1.5, 2) + M.dna.species.punchmod
+				var/damage = rand(1, 5) + M.dna.species.punchmod
 
 				var/obj/item/organ/limb/affecting = H.getrandomorgan(M.zone_sel.selecting)
 				var/armor_block = H.run_armor_check(affecting, "melee")
@@ -1210,7 +1210,7 @@
 
 	var/armor_block = H.run_armor_check(affecting, "melee", "<span class='notice'>Your armor has protected your [hit_area].</span>", "<span class='notice'>Your armor has softened a hit to your [hit_area].</span>",I.armour_penetration)
 	var/Iforce = I.force //to avoid runtimes on the forcesay checks at the bottom. Some items might delete themselves if you drop them. (stunning yourself, ninja swords)
-	var/dmgcheck = apply_damage((1-I.stamina_percentage)*I.force, I.damtype, affecting, armor_block, H)
+	var/dmgcheck = apply_damage(I.force, I.damtype, affecting, armor_block, H)
 	var/staminadmgcheck = apply_damage(I.stamina_percentage*I.force, STAMINA, affecting, armor_block, H)
 	
 	if(!dmgcheck && !staminadmgcheck && I.force != 0 || !affecting) //Something went wrong. Maybe the limb is missing?
