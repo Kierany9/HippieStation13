@@ -1,0 +1,4 @@
+author: Kierany9
+delete-after: True
+changes: 
+  - tweaked: "Changed the way melee damage is calculated. Stamina damage dealt by blunt weapons no longer replaces part of their brute damage and is now added on top of the existing brute. Many blunt weapons are now far stronger in combat, but will still crit and kill slower than sharper weapons."
