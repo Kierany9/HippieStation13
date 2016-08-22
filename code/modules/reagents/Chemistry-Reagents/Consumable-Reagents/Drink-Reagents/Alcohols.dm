@@ -320,10 +320,11 @@
 	description = "Deny drinking this and prepare for THE LAW."
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 25
-	metabolization_rate = 0.8
+	metabolization_rate = 2 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/ethanol/beepsky_smash/on_mob_life(mob/living/M)
-	M.Stun(1)
+	if(volume > 3 && current_cycle > 5)
+		M.weakened = max(M.weakened, 2)
 	..()
 	return
 
@@ -677,7 +678,8 @@
 	boozepwr = 25
 
 /datum/reagent/consumable/ethanol/neurotoxin/on_mob_life(mob/living/carbon/M)
-	M.weakened = max(M.weakened, 3)
+	if(volume > 3)
+		M.weakened = max(M.weakened, 3)
 	switch(current_cycle)
 		if(45 to 55)
 			if(prob(50))
