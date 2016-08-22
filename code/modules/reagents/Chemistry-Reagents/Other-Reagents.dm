@@ -134,8 +134,7 @@
 		T.MakeSlippery(TURF_WET_WATER, time)
 
 	for(var/mob/living/simple_animal/slime/M in T)
-		M.apply_water()
-		M.adjustBruteLoss(2.5*reac_volume)
+		M.apply_water(rand(8,12))
 
 	var/obj/effect/hotspot/hotspot = (locate(/obj/effect/hotspot) in T)
 	if(hotspot && !istype(T, /turf/space))
@@ -177,6 +176,10 @@
 		return
 	if(method == TOUCH || VAPOR)
 		M.adjust_fire_stacks(-(reac_volume))
+	if(method != VAPOR)
+		if(istype(M, /mob/living/simple_animal/slime))
+			var/mob/living/simple_animal/slime/S = M
+			S.apply_water(reac_volume*2)
 	..()
 
 /datum/reagent/water/holywater
