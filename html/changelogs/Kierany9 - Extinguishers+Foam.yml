@@ -10,8 +10,10 @@ delete-after: True
 # Also, this gets changed to [] after reading.  Just remove the brackets when you add new shit.
 # Please surround your changes in  double quotes ("). It works without them, but if you use certain characters it screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - tweak: "Fire extinguishers now fire 10u instead of 5, and carry 100u instead of 50 so that they're less awful at extinguishing."
+  - tweak: "Water's effectiveness at extinguishing fire has been doubled and extinguishers now carry 100u instead of 50u so that they're less awful."
   - tweak: "Fire extinguishers now use VAPOR instead of TOUCH. This means that reagents inside the extinguisher can now be applied to targets similarly to spray bottles and the chemical sprayer."
   - tweak: "Slimes now take damage from having water splashed on them, instead of just from fire extinguishers."
   - tweak: "Increased the effectiveness of chemical foam. Foams no longer apply less reagents the more foam you use and increased the amount of reagents added with low quantities of reagents."
+  - tweak: "Buffed Beepsky Smash. The stun effect now works exactly like Neurotoxin except that it doesn't kick in until 5 ticks have passed."
+  - tweak: "Both Neurotoxin and Beepsky Smash now require at least 3 units to stun."
   - bugfix: "Fixed a bug where Strained Muscles could toggle godmode among other effects due to it removing bitflags incorrectly."
