@@ -54,7 +54,7 @@
 		kill_foam()
 		return
 
-	var/fraction = 1/initial(lifetime)
+	var/fraction = 1 //Was previously 1/initial(lifetime)
 	for(var/obj/O in range(0,src))
 		if(O.type == src.type)
 			continue
@@ -76,7 +76,7 @@
 		return 0
 	if(!istype(L))
 		return 0
-	var/fraction = 1/initial(lifetime)
+	var/fraction = 1 //Was previously 1/initial(lifetime)
 	reagents.reaction(L, VAPOR, fraction)
 	lifetime--
 	return 1
@@ -160,7 +160,7 @@
 	else
 		var/obj/effect/particle_effect/foam/F = PoolOrNew(effect_type, location)
 		var/foamcolor = mix_color_from_reagents(chemholder.reagents.reagent_list)
-		chemholder.reagents.copy_to(F, chemholder.reagents.total_volume/amount)
+		chemholder.reagents.copy_to(F, sqrt(chemholder.reagents.total_volume/6)) //Was previously (F, chemholder.reagents.total_volume/amount), this meant that it would add less reagents the more foam you had. Now the amount of reagents added is independent of the amount of foam used, and has diminishing returns the more of one reagent you use.
 		F.color = foamcolor
 		F.amount = amount
 		F.metal = metal
