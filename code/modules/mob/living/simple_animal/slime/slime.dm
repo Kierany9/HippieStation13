@@ -301,8 +301,8 @@
 /mob/living/simple_animal/slime/show_inv(mob/user)
 	return
 
-/mob/living/simple_animal/slime/proc/apply_water()
-	adjustBruteLoss(rand(15,20))
+/mob/living/simple_animal/slime/proc/apply_water(dam=0)
+	adjustBruteLoss(dam)
 	if(!client)
 		if(Target) // Like cats
 			Target = null
