@@ -135,6 +135,7 @@
 
 	for(var/mob/living/simple_animal/slime/M in T)
 		M.apply_water()
+		M.adjustBruteLoss(2.5*reac_volume)
 
 	var/obj/effect/hotspot/hotspot = (locate(/obj/effect/hotspot) in T)
 	if(hotspot && !istype(T, /turf/space))
@@ -176,6 +177,8 @@
 		return
 	if(method == TOUCH)
 		M.adjust_fire_stacks(-(reac_volume))
+	if(method == VAPOR)
+		M.adjust_fire_stacks(-(2*reac_volume))
 	..()
 
 /datum/reagent/water/holywater
