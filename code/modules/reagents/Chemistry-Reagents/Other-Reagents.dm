@@ -175,10 +175,8 @@
 /datum/reagent/water/reaction_mob(mob/living/M, method=TOUCH, reac_volume)//Splashing people with water can help put them out!
 	if(!istype(M, /mob/living))
 		return
-	if(method == TOUCH)
+	if(method == TOUCH || VAPOR)
 		M.adjust_fire_stacks(-(reac_volume))
-	if(method == VAPOR)
-		M.adjust_fire_stacks(-(2*reac_volume))
 	..()
 
 /datum/reagent/water/holywater
