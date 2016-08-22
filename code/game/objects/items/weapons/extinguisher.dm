@@ -33,7 +33,7 @@
 	force = 3
 	stamina_percentage = 0.5
 	materials = list()
-	max_chem = 60
+	max_chem = 30
 	sprite_name = "miniFE"
 	materials = list(MAT_METAL=300)
 
@@ -136,13 +136,13 @@
 			var/turf/T4 = get_step(T2,turn(direction, -90))
 			the_targets = list(T,T1,T2,T3,T4)
 
-		for(var/a=0, a<10, a++)
+		for(var/a=0, a<5, a++)
 			spawn(0)
 				var/obj/effect/particle_effect/water/W = new /obj/effect/particle_effect/water(get_turf(src))
 				var/turf/my_target = pick(the_targets)
 				if(precision)
 					the_targets -= my_target
-				var/datum/reagents/R = new/datum/reagents(10)
+				var/datum/reagents/R = new/datum/reagents(5)
 				if(!W) return
 				W.reagents = R
 				R.my_atom = W
