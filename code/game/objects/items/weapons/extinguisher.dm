@@ -14,7 +14,7 @@
 	stamina_percentage = 0.4
 	materials = list(MAT_METAL=500)
 	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
-	var/max_chem = 50
+	var/max_chem = 100
 	var/last_use = 1
 	var/safety = 1
 	var/sprite_name = "fire_extinguisher"
@@ -33,7 +33,7 @@
 	force = 3
 	stamina_percentage = 0.5
 	materials = list()
-	max_chem = 30
+	max_chem = 60
 	sprite_name = "miniFE"
 	materials = list(MAT_METAL=300)
 
@@ -136,13 +136,13 @@
 			var/turf/T4 = get_step(T2,turn(direction, -90))
 			the_targets = list(T,T1,T2,T3,T4)
 
-		for(var/a=0, a<5, a++)
+		for(var/a=0, a<10, a++)
 			spawn(0)
 				var/obj/effect/particle_effect/water/W = new /obj/effect/particle_effect/water(get_turf(src))
 				var/turf/my_target = pick(the_targets)
 				if(precision)
 					the_targets -= my_target
-				var/datum/reagents/R = new/datum/reagents(5)
+				var/datum/reagents/R = new/datum/reagents(10)
 				if(!W) return
 				W.reagents = R
 				R.my_atom = W
@@ -154,7 +154,7 @@
 					W.reagents.reaction(get_turf(W))
 					for(var/atom/atm in get_turf(W))
 						if(!W) return
-						W.reagents.reaction(atm, TOUCH, show_message = 0) // so it actually puts peeps out with water etc
+						W.reagents.reaction(atm, VAPOR, show_message = 0) // so it actually puts peeps out with water etc
 					if(W.loc == my_target) break
 					if(!W.reagents.total_volume) break
 					sleep(2)
